@@ -43,7 +43,8 @@ a.navbar-brand {
   .toolbar .login i {
     font-size: 1.6em; }
 
-/* search page */
+/* search page 
+ ----------------------------------------------------------------------------*/
 ul.gist-list {
   padding: 0px; }
   ul.gist-list > li {
@@ -100,11 +101,11 @@ ul.gist-list {
         border-left: 1px solid #ddd;
         text-align: center; }
         ul.gist-list > li .gist-footer > li.gist-updated {
-          width: 140px;
+          width: 155px;
           overflow: hidden;
           border-top-left-radius: 4px; }
         ul.gist-list > li .gist-footer > li.gist-comments {
-          width: 105px;
+          width: 110px;
           overflow: hidden; }
         ul.gist-list > li .gist-footer > li i {
           margin-right: 4px; }

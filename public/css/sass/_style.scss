@@ -59,8 +59,8 @@ a.navbar-brand {
   }
 }
 
-
-/* search page */
+/* search page 
+ ----------------------------------------------------------------------------*/
 ul.gist-list {
   padding: 0px;
   >li {
@@ -133,14 +133,14 @@ ul.gist-list {
         padding: 4px;
         border-left: 1px solid #ddd;
         text-align: center;
-        
+
         &.gist-updated {
-          width: 140px;
+          width: 155px;
           overflow:hidden;
           border-top-left-radius: 4px;
         }
         &.gist-comments {
-          width: 105px;
+          width: 110px;
           overflow:hidden;
         }
         i {

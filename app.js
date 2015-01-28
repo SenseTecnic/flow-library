@@ -376,7 +376,6 @@ app.get("/search",function(req,res) {
     q['pageSize'] = 25;
 
     si.search(q,function(msg) {
-        console.log(msg)
         if (msg.hits) {
             context.gists = msg.hits.map(function(res) {
                 console.log(res)
@@ -385,7 +384,12 @@ app.get("/search",function(req,res) {
                     title:res.document.title,
                     description: res.document.body,
                     owner: res.document.owner,
-                    tags: res.document.tags
+                    tags: res.document.tags,
+                    created_at: res.document.created_at,
+                    updated_at: res.document.updated_at,
+                    comment_count: res.document.comment_count,
+                    owner_login: res.document.owner_login,
+                    owner_avatar_url: res.document.owner_avatar_url,
                 };
             });
         }
