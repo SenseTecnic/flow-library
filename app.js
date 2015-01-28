@@ -374,10 +374,19 @@ app.get("/search",function(req,res) {
     q['query'] = search.split(" ");
     q['offset'] = 0;
     q['pageSize'] = 25;
+
     si.search(q,function(msg) {
+        console.log(msg)
         if (msg.hits) {
             context.gists = msg.hits.map(function(res) {
-                return {id:res.id,description:res.document.title};
+                console.log(res)
+                return {
+                    id:res.id,
+                    title:res.document.title,
+                    description: res.document.body,
+                    owner: res.document.owner,
+                    tags: res.document.tags
+                };
             });
         }
         context.search = search;

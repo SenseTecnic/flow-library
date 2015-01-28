@@ -1,12 +1,12 @@
 {{>_header}}
   <div class="container main-content">
     <div class="row-fluid">
-      <div class="offset1 span8">
+      <div class="col-sm-offset-1 col-sm-8">
         <h3 class="pagetitle">{{ description }}</h3>
           {{{ readme }}}
           <pre id="flow" class="highlight language-javascript">{{ flow }}</pre>
       </div>
-      <div class="span3">
+      <div class="col-sm-3">
           <div class="flowmeta">
             <span class="flowuser"><a href="/user/{{ owner.login }}"><img src="{{ owner.avatar_url }}"/> {{ owner.login }}</a></span>
           </div>

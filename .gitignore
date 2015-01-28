@@ -5,3 +5,4 @@ settings.js
 matcher
 search-index.json
 si
+**/.sass-cache

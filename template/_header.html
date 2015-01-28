@@ -1,44 +1,54 @@
 <!DOCTYPE html>
 <html lang="en"><head>
 <head>
-	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<title>Node-RED</title>
-	<link href='http://fonts.googleapis.com/css?family=Roboto+Slab:400,700,300,100' rel='stylesheet' type='text/css'>
-    <link href="//netdna.bootstrapcdn.com/twitter-bootstrap/2.3.2/css/bootstrap-combined.no-icons.min.css" rel="stylesheet">
-	<link href="/bootstrap/css/bootstrap.min.css" rel="stylesheet" media="screen">
-	<link href="/bootstrap/css/bootstrap.slate.min.css" rel="stylesheet" media="screen">
-	<link href="/bootstrap/css/bootstrap-responsive.min.css" rel="stylesheet" media="screen">
-    <link href="//netdna.bootstrapcdn.com/font-awesome/3.2.1/css/font-awesome.css" rel="stylesheet">
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Node-RED Foundry</title>
 
-	<link href="/css/style.css" rel="stylesheet" media="screen">
-	<link href="/css/library.css" rel="stylesheet" media="screen">
-	
-    <script src="/jquery/js/jquery-1.9.1.js"></script>
-    <script src="/bootstrap/js/bootstrap.min.js"></script>
+  <link href='http://fonts.googleapis.com/css?family=Roboto+Slab:400,700,300,100' rel='stylesheet' type='text/css'>
+  <link href="/bower_components/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link href="/bower_components/bootstrap/dist/css/bootstrap-theme.min.css" rel="stylesheet">
+  <link href="/bower_components/font-awesome/css/font-awesome.min.css" rel="stylesheet">
+
+  <link href="/css/library.css" rel="stylesheet" media="screen">
+  <link href="/css/style.css" rel="stylesheet" media="screen">
+
+  <script src="/bower_components/jquery/dist/jquery.min.js"></script>
+  <script src="/bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
 
 </head>
-  <div class="navbar navbar-inverse navbar-fixed-top shadow">
-    <div class="navbar-inner">
-      <div class="container">
-        <button type="button" class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
-          <span class="icon-bar"></span>
-          <span class="icon-bar"></span>
-          <span class="icon-bar"></span>
-        </button>
-        <a class="brand" href="/"><img src="/node-red.png"> Node-RED</a>
-        <div class="nav-collapse collapse pull-right">
-          <ul class="nav">
-            <li><a href="http://nodered.org">home</a></li>
-            <li><a href="http://blog.nodered.org">blog</a></li>
-            <li><a href="http://nodered.org/docs/">documentation</a></li>
-            <li class="current"><a href="http://flows.nodered.org">flows</a></li>
-            <li><a href="http://github.com/node-red/node-red">github</a></li>
-          </ul>
-        </div>
+
+<body>
+<div id="wrapper">
+  <nav class="navbar navbar-default navbar-fixed-top" role="navigation">
+    <div class="container">
+      <div class="navbar-header">
+        <a class="navbar-brand" href="/">
+          <img src="/images/logo-notag.png" width="84"/>
+        </a>
+        <span class='navbar-brand navbar-project'>Node-RED Foundry</span>
+      </div>
+      <div id="navbar" class="collapse navbar-collapse">
+        <button type="button" class="btn btn-primary navbar-btn navbar-right hidden" id='not-logged-in-nav' data-toggle="modal" data-target="#login-modal">Sign In</button>
+        <ul id="logged-in-nav" class="nav navbar-nav navbar-right hidden">
+          <li class="dropdown">
+            <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
+              <span id="navbar-fullname"></span> <span class="caret"></span>
+            </a>
+            <ul class="dropdown-menu" role="menu">
+              <li id="node-red-nav"><a  href="/red" >Node-RED</a></li>
+              <li><a href="#" data-toggle="modal" data-target="#profile-modal">Profile</a></li>
+              <li><a href="#" data-toggle="modal" data-target="#status-modal">Status</a></li>
+              <li><a id="admin-nav" href="/admin.html" class="hidden">Admin</a></li>
+              <li><a href="/logout">Logout</a></li>
+            </ul>
+          </li>
+        </ul>
       </div>
     </div>
-  </div>
+  </nav>
+
+
   <div class="banner">
   {{>_login}}
 

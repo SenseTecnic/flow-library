@@ -1,0 +1,167 @@
+
+html, body {
+  height: 100%;
+}
+
+ul {
+  list-style: none;
+  padding: 0;
+}
+
+.clear {
+  clear:both;
+}
+
+#wrapper {
+  min-height: 100%; /*sticky footer*/
+}
+
+.banner {
+  overflow: auto; /*sticky footer*/
+  padding-bottom: 60px;
+}
+
+.footer {
+  position: relative; /*sticky footer*/
+  margin-top: -60px; 
+  height: 60px;
+  clear: both;
+  width: 100%;
+  background-color: #f5f5f5;
+
+  .container .text-muted {
+    margin: 20px 0;
+  }
+}
+
+
+.brand,h1,h2,h3,h4,h5 {
+/*    font-family: 'Roboto Slab', serif;
+    text-shadow: none;*/
+}
+
+
+a.navbar-brand {
+  padding: 5px 15px;
+}
+
+.navbar-project.navbar-brand {
+  padding: 15px;
+}
+
+.toolbar{
+  margin-top: 60px;
+
+  .login {
+    i {
+      font-size: 1.6em;
+    }
+  }
+}
+
+
+/* search page */
+ul.gist-list {
+  padding: 0px;
+  >li {
+    position: relative;
+    border-radius: 4px;
+    border: 1px solid #ddd;
+    padding: 15px;
+    margin-bottom: 15px;
+    overflow: hidden;
+
+    >.gist-title {
+      font-size: 1.4em;
+    }
+
+    .gist-description {
+      white-space: nowrap;
+      text-overflow: ellipsis;
+      overflow: hidden;
+    }
+
+    .gist-created {
+      color: #999 !important;
+      font-size: 0.85em;
+      display: block;
+      margin-bottom: 5px;
+    }
+
+    .gist-tags {
+      >li{
+        display: inline-block;
+        margin-right: 5px;
+        >a {
+          text-decoration: none;
+          cursor: pointer;
+          border-radius: 4px;
+          background: #c0c0c0;
+          color: #fff;
+          padding: 2px 4px;
+          border: 1px solid #aaa;
+
+          &:hover {
+            background: #a0a0a0;
+          }
+        }
+      }
+    }
+
+    .gist-owner {
+      float:right;
+      height: 35px;
+      width: 35px;
+      border-radius: 4px;
+      overflow: hidden;
+      background-position: 50% 50%;
+      background-size: cover !important;
+    }
+
+    .gist-footer {
+      position: absolute;
+      bottom: -5px;
+      right: 0;
+      color: #999;
+      background: #eee;
+      font-size: 0.85em;
+      border-top: 1px solid #ddd;
+      border-top-left-radius: 4px;
+
+      >li {
+        display: inline-block;
+        padding: 4px;
+        border-left: 1px solid #ddd;
+        text-align: center;
+        
+        &.gist-updated {
+          width: 140px;
+          overflow:hidden;
+          border-top-left-radius: 4px;
+        }
+        &.gist-comments {
+          width: 105px;
+          overflow:hidden;
+        }
+        i {
+          margin-right: 4px;
+        }
+      }
+    }
+    .status-broken {
+      color: #fff;
+      background-color: #5cb85c;
+      border-color: #4cae4c;
+    }
+    .status-wip {
+      color: #fff;
+      background-color: #f0ad4e;
+      border-color: #eea236;
+    }
+    .status-ready {
+      color: #fff;
+      background-color: #d9534f;
+      border-color: #d43f3a;
+    }
+  }
+}
