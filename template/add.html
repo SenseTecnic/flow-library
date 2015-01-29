@@ -1,4 +1,17 @@
 {{>_header}}
+  
+  <div class="banner">
+    <div class="container">
+      <div class="row">
+        <div class="col-sm-12">
+          <h2 class="pagetitle">Add a Flow</h2>
+          <p class="lead">Flow will be saved as a Gist under your GitHub account.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
   <div class="container main-content add-form">
 {{#sessionuser}}   
    <div class="row">
@@ -45,7 +58,7 @@
    </div>
    <div class="row" style="margin-top: 15px;">
        <div class="col-sm-offset-3 col-sm-9">
-            <a id="add-flow-create" href="#" class="btn-create"><span id="add-flow-label">create flow</span><img id="add-flow-loader" class="loader" src="/images/loader.gif" /></a>
+            <a id="add-flow-create" href="#" class="btn btn-primary"><span id="add-flow-label">create flow</span><img id="add-flow-loader" class="loader" src="/images/loader.gif" /></a>
             <p class="create-toc">This will create a private gist, owned by you, on GitHub and add it to the Node-RED flow library on your behalf.</p>
        </div>
    </div>

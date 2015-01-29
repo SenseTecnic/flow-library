@@ -1,8 +1,19 @@
 {{>_header}}
+
+  <div class="banner">
+    <div class="container">
+      <div class="row">
+        <div class="col-sm-12">
+          <h2 class="pagetitle">{{ description }}</h2>
+          <p class="lead"><!-- empty filler for now --></p>
+        </div>
+      </div>
+    </div>
+  </div>
+
   <div class="container main-content">
-    <div class="row-fluid">
-      <div class="col-sm-offset-1 col-sm-8">
-        <h3 class="pagetitle">{{ description }}</h3>
+    <div class="row">
+      <div class="col-sm-9">
           {{{ readme }}}
           <pre id="flow" class="highlight language-javascript">{{ flow }}</pre>
       </div>

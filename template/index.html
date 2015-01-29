@@ -1,28 +1,78 @@
 {{>_header}}
-
-  <div class="container main-content">
-    <div class="row">
-      <div class="col-sm-10">
-        <h2 class="pagetitle">Flow Library</h2>
-        <p class="lead">Share your flows and see what other people have done with Node-RED.</p>
-      </div>
-      <div class="col-sm-2" style="padding-top: 30px; text-align: right;">
-        <a href="/add" class="btn btn-primary">Add a flow</a>
-      </div>
-    </div>
-    
-    <div class="row">
-      <div class="col-sm-6">
-        <h3>Recently Added</h3>
-        <ul>{{#recentGists}}{{>_gistlist}}{{/recentGists}}
-        </ul>
-      </div>
-      <div class="col-sm-6">
-        <h3>Popular Tags</h3>
-        <ul>{{#popularTags}}{{>_taglist}}{{/popularTags}}
-        </ul>
+  <script src="/js/jqcloud.min.js"></script>
+  
+  <div class="banner">
+    <div class="container">
+      <div class="row">
+        <div class="col-sm-10">
+          <h2 class="pagetitle">Flow Library</h2>
+          <p class="lead">Share your flows and see what other people have done with Node-RED.</p>
+        </div>
+        <div class="col-sm-2" style="padding-top: 30px; text-align: right;">
+            <a href="/add" class="btn btn-primary">Add a flow</a>
+        </div>
       </div>
     </div>
   </div>
-  
+
+  <div class="container main-content page-index">
+
+    <div class="row">
+      <div class="col-sm-6">
+        
+        <h3>Recently Added</h3>
+        <ul class="gist-list condensed">{{#recentGists}}{{>_gistlist}}{{/recentGists}}</ul>
+
+      </div>
+      <div class="col-sm-6">
+          <div class="search">
+            <div class="searchbox">
+              <form id="searchform" action="/search">
+                <input type="text" name="s" placeholder="Search flows" {{#search}}value="{{.}}"{{/search}}>
+                <a id="dosearch" href="#"><i class="fa fa-search"></i></a>
+              </form>
+              <script>$("#dosearch").on('click',function(e){e.preventDefault(); $("#searchform").submit();});</script>
+            </div>
+          </div>
+          
+          <!-- tag cloud -->
+          <ul id="tag-list"></ul>
+
+          <h3>Highest Rated</h3>
+          <ul class="gist-list condensed">{{#recentGists}}{{>_gistlist}}{{/recentGists}}</ul>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="col-sm-6">
+        
+      </div>
+      <div class="col-sm-6">
+      </div>
+    </div>
+
+  </div>
+
+<script>
+
+$(function() {
+  //build the tag cloud
+  var tags = [
+    {{#popularTags}}
+      {
+        text: '{{_id}}', 
+        weight: {{count}},
+        link: '/tag/{{_id}}'
+      },
+    {{/popularTags}}
+  ];
+  $("#tag-list").jQCloud(tags, {
+    //shape: 'rectangular'
+  });
+
+});
+</script>
+
+
+
 {{>_footer}}

@@ -12,10 +12,15 @@
 $(function() {
 	$(".moment").each(function () {
 		var self = $(this);	
-		console.log(self.text())
-		self.text(moment(self.text()).fromNow());
+		if (self.text() !== "") {
+      self.text(moment(self.text()).fromNow());
+    }
+    else {
+      console.log('Time unknown for element', self)
+    }
 	});
 
 });
 </script>
 
+</html>

@@ -1,28 +1,50 @@
 {{>_header}}
+  <div class="banner">
+    <div class="container">
+      <div class="row">
+        <div class="col-sm-12 search"> 
+          <div class="pagetitle lead search-title">Search: </div>
+          <div class="searchbox">
+            <form id="searchform" action="/search">
+              <input type="text" name="s" placeholder="search" {{#search}}value="{{.}}"{{/search}}>
+              <a id="dosearch" href="#"><i class="fa fa-search"></i></a>
+            </form>
+            <script>$("#dosearch").on('click',function(e){e.preventDefault(); $("#searchform").submit();});</script>
+          </div>
+
+          <h3 class="pagetitle lead pull-right">{{hitString}}</h3>
+        </div>
+      </div>
+    </div>
+  </div>
+
   <div class="container main-content">
     <div class="row">
       <div class="col-sm-12">
-        <h3 class="pagetitle">Search: {{search}}</h3>
+          <ul class="search-toolbar">
+            <li></li>
+          </ul>
       </div>
     </div>
+
     <div class="row">
       <div id="readme" class="col-sm-12">
       <ul class="gist-list">
       {{#gists}}
         <li>
             <a href="#" class="gist-owner"
-              style="background: url('{{owner_avatar_url}}&s=35');">
+              style="background: url('{{owner.avatar_url}}&s=35');">
             </a>
-            <a class="gist-title" href="/flow/{{id}}">{{title}}</a>
-            <p class="gist-created">Created <span class="moment">{{created_at}}</span> by {{owner_login}}</span>
-            <p class="gist-description">{{description}}</p>
+            <a class="gist-description" href="/flow/{{id}}">{{description}}</a>
+            <p class="gist-created">Created <span class="moment">{{created_at}}</span> by {{owner.login}}</span>
+            <p class="gist-readme">{{readme}}</p>
 
-            <ul class="gist-tags">
-              {{#tags}}<li><a>{{.}}</a></li>{{/tags}}
+            <ul class="gist-tags flow-tags">
+              {{#tags}}<li><a href="/tag/{{.}}">{{.}}</a></li>{{/tags}}
             </ul>
             <ul class="gist-footer">
               <li class="gist-updated"><i class="fa fa-refresh"></i>Updated <span class="moment">{{updated_at}}</span></li>
-              <li class="gist-comments"><i class="fa fa-comments"></i>{{comment_count}}12 Comments</li>
+              <li class="gist-comments"><i class="fa fa-comments"></i>{{comments}} comments</li>
             </ul>
         </li>
       {{/gists}}

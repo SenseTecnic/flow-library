@@ -1,3 +1,18 @@
 <li>
-  <a href="/flow/{{id}}">{{description}}</a> - <a href="/user/{{owner.login}}">{{owner.login}}</a>
+  <a href="#" class="gist-owner"
+    style="background: url('{{owner.avatar_url}}&s=35');">
+  </a>
+  <a class="gist-description" href="/flow/{{id}}">{{description}}</a>
+  <p class="gist-created">Created <span class="moment">{{created_at}}</span> by {{owner.login}}</span>
+  <ul class="gist-footer">
+  	<li class="gist-updated"><i class="fa fa-refresh"></i>Updated <span class="moment">{{updated_at}}</span></li>
+    <li class="gist-ratings">
+    	<i class="fa fa-star"></i>
+    	<i class="fa fa-star"></i>
+    	<i class="fa fa-star"></i>
+    	<i class="fa fa-star"></i>
+    	<i class="fa fa-star"></i>
+    	5/5
+    </li>
+  </ul>
 </li>

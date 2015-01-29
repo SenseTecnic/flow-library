@@ -30,26 +30,19 @@
         <span class='navbar-brand navbar-project'>Node-RED Foundry</span>
       </div>
       <div id="navbar" class="collapse navbar-collapse">
-        <button type="button" class="btn btn-primary navbar-btn navbar-right hidden" id='not-logged-in-nav' data-toggle="modal" data-target="#login-modal">Sign In</button>
-        <ul id="logged-in-nav" class="nav navbar-nav navbar-right hidden">
-          <li class="dropdown">
-            <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
-              <span id="navbar-fullname"></span> <span class="caret"></span>
-            </a>
-            <ul class="dropdown-menu" role="menu">
-              <li id="node-red-nav"><a  href="/red" >Node-RED</a></li>
-              <li><a href="#" data-toggle="modal" data-target="#profile-modal">Profile</a></li>
-              <li><a href="#" data-toggle="modal" data-target="#status-modal">Status</a></li>
-              <li><a id="admin-nav" href="/admin.html" class="hidden">Admin</a></li>
-              <li><a href="/logout">Logout</a></li>
-            </ul>
-          </li>
-        </ul>
+        <div class="nav navbar-nav navbar-right login">
+          {{^sessionuser}}
+          <a class="signin" href="/login"><i class="icon-github"></i> sign in with <b>GitHub</b></a>
+          <script>$(function() { $(".signin").attr('href','/login?return='+window.location.pathname);});</script>
+          {{/sessionuser}}
+          {{#sessionuser}}
+          <i class="fa fa-github"></i>
+          <a href="/user/{{login}}"><b>{{login}}</b></a> <img src="{{avatar_url}}"/>
+          {{/sessionuser}}  
+        </div>
       </div>
     </div>
   </nav>
 
-
-  <div class="banner">
-  {{>_login}}
+  <div class="content">
 

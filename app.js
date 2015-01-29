@@ -366,39 +366,49 @@ app.get("/tag/:id",function(req,res) {
 });
 
 app.get("/search",function(req,res) {
-    var search = req.query.s;
+    var search = req.query.s || "*";
+    var offset = req.query.offset || 0;
+    var limit = req.query.limit || 25;
     var context = {};
+    // search = search === '' ? "*" : search.split(" ");
 
     var si = require('search-index');
-    var q = {};
-    q['query'] = search.split(" ");
-    q['offset'] = 0;
-    q['pageSize'] = 25;
+    var q = {
+        'query': search === "*" ? search: search.split(" "),
+        'offset': offset,
+        'pageSize': limit,
+    };
 
-    si.search(q,function(msg) {
-        if (msg.hits) {
-            context.gists = msg.hits.map(function(res) {
-                console.log(res)
+    console.log('search query: ', q)
+
+    si.search(q,function(results) {
+        if (results.hits) {
+            context.gists = results.hits.map(function(res) {
+                // console.log('search result:', res)
                 return {
                     id:res.id,
-                    title:res.document.title,
-                    description: res.document.body,
-                    owner: res.document.owner,
+                    description:res.document.description,
+                    readme: res.document.readme,
                     tags: res.document.tags,
                     created_at: res.document.created_at,
                     updated_at: res.document.updated_at,
-                    comment_count: res.document.comment_count,
-                    owner_login: res.document.owner_login,
-                    owner_avatar_url: res.document.owner_avatar_url,
+                    comments: res.document.comments,
+                    owner: {
+                        login: res.document.owner__login,
+                        avatar_url: res.document.owner__avatar_url,
+                    }
                 };
             });
         }
-        context.search = search;
+
+        var hits = results.hits.length;
+        var hitString = hits + (hits === 1 ? " result" : " results");
+        context.hitString = hitString;
+        context.search = search === "*"? "" : search;
+
         context.sessionuser = req.session.user;
         res.send(mustache.render(renderTemplates.search,context,partialTemplates));
     });
-
-    
 });
 
 app.use(function(req, res) {
