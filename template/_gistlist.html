@@ -1,18 +1,16 @@
 <li>
-  <a href="#" class="gist-owner"
-    style="background: url('{{owner.avatar_url}}&s=35');">
-  </a>
-  <a class="gist-description" href="/flow/{{id}}">{{description}}</a>
-  <p class="gist-created">Created <span class="moment">{{created_at}}</span> by {{owner.login}}</span>
-  <ul class="gist-footer">
-  	<li class="gist-updated"><i class="fa fa-refresh"></i>Updated <span class="moment">{{updated_at}}</span></li>
-    <li class="gist-ratings">
-    	<i class="fa fa-star"></i>
-    	<i class="fa fa-star"></i>
-    	<i class="fa fa-star"></i>
-    	<i class="fa fa-star"></i>
-    	<i class="fa fa-star"></i>
-    	5/5
-    </li>
-  </ul>
+    <a href="/user/{{owner.login}}" class="gist-owner"
+      style="background: url('{{owner.avatar_url}}&s=35');">
+    </a>
+    <a class="gist-description" href="/flow/{{id}}">{{description}}</a>
+    <p class="gist-created">Created <span class="moment">{{created_at}}</span> by {{owner.login}}</span>
+    <p class="gist-readme">{{readme}}</p>
+
+    <ul class="gist-tags flow-tags">
+      {{#tags}}<li><a href="/tag/{{.}}">{{.}}</a></li>{{/tags}}
+    </ul>
+    <ul class="gist-footer">
+      <li class="gist-updated"><i class="fa fa-refresh"></i>Updated <span class="moment">{{updated_at}}</span></li>
+      <li class="gist-comments"><i class="fa fa-comments"></i>{{comments}} comments</li>
+    </ul>
 </li>

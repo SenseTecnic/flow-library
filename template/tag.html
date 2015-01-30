@@ -1,14 +1,20 @@
 {{>_header}}
-  <div class="container main-content">
+<div class="banner">
+  <div class="container">
     <div class="row">
       <div class="col-sm-12">
-        <h3 class="pagetitle">Tag: {{ tag }}</h3>
-      </div>
-    </div>
-    <div class="row">
-      <div id="readme" class="col-sm-12">
-      <ul class="gist-list">{{#gists}}{{>_gistlist}}{{/gists}}</ul>
+        <h2 class="pagetitle">Tag: {{ tag }}</h2>
+        <p class="lead"></p>
       </div>
     </div>
   </div>
+</div>
+
+<div class="container main-content">
+  <div class="row">
+    <div id="readme" class="col-sm-12">
+    <ul class="gist-list">{{#gists}}{{>_gistlist}}{{/gists}}</ul>
+    </div>
+  </div>
+</div>
 {{>_footer}}

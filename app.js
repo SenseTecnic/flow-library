@@ -127,10 +127,12 @@ app.get("/",function(req,res) {
     context.sessionuser = req.session.user;
     when.all([
         gister.getAll(),
-        gister.getAllTags()
+        gister.getAllTags(),
+        gister.getGists({}, {ratings_avg: -1})
     ]).then(function(results) {
         context.recentGists = results[0];
         context.popularTags = results[1];
+        context.highestRatedGists = results[2];
         res.send(mustache.render(renderTemplates.index,context,partialTemplates));
     }).otherwise(function(err) {
         context.err = err;
@@ -285,6 +287,18 @@ app.post("/flow/:id/tags",function(req,res) {
         res.send(200);
     });
     
+});
+
+app.post("/flow/:id/rate", function(req,res) {    
+    gister.updateRatings(
+            req.params.id,
+            req.body.rating, 
+            req.sessionID  //this is some sort of ID to identify the user, session ID for now but should probably use a cookie or force users to login with github
+        ).then(function(gist) {
+            res.send(gist);
+    }).otherwise(function(err) {
+        res.send(406, err);
+    });
 });
 
 app.post("/flow/:id/refresh",function(req,res) {

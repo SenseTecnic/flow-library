@@ -1,0 +1,14 @@
+<li>
+  <a href="/user/{{owner.login}}" class="gist-owner"
+    style="background: url('{{owner.avatar_url}}&s=35');">
+  </a>
+  <a class="gist-description" href="/flow/{{id}}">{{description}}</a>
+  <p class="gist-created">Created <span class="moment">{{created_at}}</span> by {{owner.login}}</span>
+  <ul class="gist-footer">
+  	<li class="gist-updated"><i class="fa fa-refresh"></i>Updated <span class="moment">{{updated_at}}</span></li>
+    <li class="gist-ratings">
+      <ul class="rate-stars"></ul>
+      <span class="rate-value"><span>{{ratings_avg}}</span> / 5</span>
+    </li>
+  </ul>
+</li>

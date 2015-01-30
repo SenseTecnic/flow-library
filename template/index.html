@@ -19,44 +19,41 @@
 
     <div class="row">
       <div class="col-sm-6">
-        
-        <h3>Recently Added</h3>
-        <ul class="gist-list condensed">{{#recentGists}}{{>_gistlist}}{{/recentGists}}</ul>
-
+        <div class="search">
+          <div class="searchbox">
+            <form id="searchform" action="/search">
+              <input type="text" name="s" placeholder="Search flows" {{#search}}value="{{.}}"{{/search}}>
+              <a id="dosearch" href="#"><i class="fa fa-search"></i></a>
+            </form>
+            <script>$("#dosearch").on('click',function(e){e.preventDefault(); $("#searchform").submit();});</script>
+          </div>
+        </div>
+        <ul id="tag-list"></ul>
       </div>
       <div class="col-sm-6">
-          <div class="search">
-            <div class="searchbox">
-              <form id="searchform" action="/search">
-                <input type="text" name="s" placeholder="Search flows" {{#search}}value="{{.}}"{{/search}}>
-                <a id="dosearch" href="#"><i class="fa fa-search"></i></a>
-              </form>
-              <script>$("#dosearch").on('click',function(e){e.preventDefault(); $("#searchform").submit();});</script>
-            </div>
-          </div>
-          
-          <!-- tag cloud -->
-          <ul id="tag-list"></ul>
-
-          <h3>Highest Rated</h3>
-          <ul class="gist-list condensed">{{#recentGists}}{{>_gistlist}}{{/recentGists}}</ul>
+        
       </div>
     </div>
+
 
     <div class="row">
       <div class="col-sm-6">
-        
+        <h3>Recently Added</h3>
+        <ul class="gist-list condensed">{{#recentGists}}{{>_gistlist_condensed}}{{/recentGists}}</ul>
       </div>
       <div class="col-sm-6">
+        <h3>Highest Rated</h3>
+        <ul class="gist-list condensed">{{#highestRatedGists}}{{>_gistlist_condensed}}{{/highestRatedGists}}</ul>
       </div>
     </div>
+
 
   </div>
 
 <script>
 
 $(function() {
-  //build the tag cloud
+  // build the tag cloud
   var tags = [
     {{#popularTags}}
       {
@@ -66,10 +63,30 @@ $(function() {
       },
     {{/popularTags}}
   ];
-  $("#tag-list").jQCloud(tags, {
-    //shape: 'rectangular'
-  });
+  $("#tag-list").jQCloud(tags);
 
+  // sprinkles in stars for ratings
+  $(".rate-value").each(function () {
+    var rating = $(this).find('span').text();
+    var rating_floor = Math.floor(rating)
+    var starsList = $(this).siblings(".rate-stars");
+
+    if (rating == 0){
+      $(this).hide();
+      starsList.append('<span>Not rated</span>')
+    }
+    else {
+      for (var i=0; i<rating_floor; i++) {
+        starsList.append('<i class="fa fa-star"></i>');
+      }
+      if (rating_floor != rating) { //check for half points
+        starsList.append('<i class="fa fa-star-half-o"></i>');
+      }
+      for (var i=0; i<(5-Math.ceil(rating)); i++) {
+        starsList.append('<i class="fa fa-star-o"></i>');
+      }
+    }
+  });
 });
 </script>
 

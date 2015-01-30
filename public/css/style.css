@@ -17,6 +17,9 @@ ul {
   /*sticky footer*/
   padding-bottom: 60px; }
 
+.main-content {
+  padding-bottom: 150px; }
+
 .banner {
   margin-top: 50px;
   margin-bottom: 15px;
@@ -79,18 +82,26 @@ a.navbar-brand {
   .search a:hover {
     color: #676767; }
 
+/* Index page
+ ----------------------------------------------------------------------------*/
 .page-index {
   margin-top: -15px; }
   .page-index .search {
+    width: 100%;
     margin-top: 20px;
     margin-bottom: 10px; }
+    .page-index .search .searchbox {
+      max-width: 100%; }
+      .page-index .search .searchbox #searchform {
+        font-size: 1.2em; }
 
 #tag-list {
   width: 100%;
-  height: 150px;
+  height: 90px;
   overflow: hidden;
   position: relative;
-  color: #09f; }
+  color: #09f;
+  margin: 20px 0 10px 0; }
   #tag-list a {
     font-size: inherit;
     text-decoration: none; }
@@ -117,31 +128,54 @@ a.navbar-brand {
   #tag-list a {
     color: inherit; }
   #tag-list a:hover {
-    color: #0df; }
-  #tag-list a:hover {
-    color: #0cf; }
+    color: #c4213c; }
   #tag-list span.w10 {
-    color: #0cf; }
+    color: #981a2f; }
   #tag-list span.w9 {
-    color: #0cf; }
+    color: #8a2738; }
   #tag-list span.w8 {
-    color: #0cf; }
+    color: #723b46; }
   #tag-list span.w7 {
-    color: #39d; }
+    color: #67444d; }
   #tag-list span.w6 {
-    color: #90c5f0; }
+    color: #5e4d53; }
   #tag-list span.w5 {
-    color: #90a0dd; }
+    color: #595357; }
   #tag-list span.w4 {
-    color: #90c5f0; }
+    color: #545559; }
   #tag-list span.w3 {
-    color: #a0ddff; }
+    color: #64676a; }
   #tag-list span.w2 {
-    color: #99ccee; }
+    color: #c28716; }
   #tag-list span.w1 {
-    color: #aab5f0; }
+    color: #d89719; }
   #tag-list span {
     padding: 0; }
+
+/* gist page
+ ----------------------------------------------------------------------------*/
+.page-gist .rating-ctrl {
+  display: none;
+  text-align: center;
+  padding: 5px 0 25px;
+  cursor: pointer; }
+  .page-gist .rating-ctrl.active {
+    display: block; }
+  .page-gist .rating-ctrl > i {
+    font-size: 2em;
+    margin-left: 5px;
+    color: #EAC117; }
+.page-gist .gist-ratings {
+  text-align: center;
+  display: none; }
+  .page-gist .gist-ratings.active {
+    display: block; }
+  .page-gist .gist-ratings i {
+    font-size: 2em;
+    margin-left: 5px;
+    color: #EAC117; }
+  .page-gist .gist-ratings .rate-value {
+    color: #666; }
 
 /* search page 
  ----------------------------------------------------------------------------*/
@@ -267,5 +301,7 @@ ul.gist-list {
           width: auto; }
         ul.gist-list.condensed > li .gist-footer > li.gist-ratings {
           float: right; }
+          ul.gist-list.condensed > li .gist-footer > li.gist-ratings .rate-stars {
+            display: inline-block; }
     ul.gist-list.condensed > li .gist-readme {
       padding-right: 60px; }

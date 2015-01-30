@@ -11,7 +11,7 @@
     </div>
   </div>
 
-  <div class="container main-content">
+  <div class="container main-content page-gist">
     <div class="row">
       <div class="col-sm-9">
           {{{ readme }}}
@@ -31,6 +31,25 @@
                 <div class="flowinfo" style="text-align: right;"><a id="remove-flow" href="#">remove</a></div>
             {{/owned}}
           </div>
+
+          <div class="flowmeta">
+            <h4>Rating</h4>
+
+            <div class="gist-ratings active">
+              <ul class="rate-stars"></ul>
+              <span class="rate-value"><span>{{ratings_avg}}</span> / 5</span>
+
+            </div>
+            <div class="rating-ctrl">
+              <i id="rate-1" class="rate-flow fa fa-star-o"></i>
+              <i id="rate-2" class="rate-flow fa fa-star-o"></i>
+              <i id="rate-3" class="rate-flow fa fa-star-o"></i>
+              <i id="rate-4" class="rate-flow fa fa-star-o"></i>
+              <i id="rate-5" class="rate-flow fa fa-star-o"></i>
+            </div>
+            <a id="toggle-rating-ctrl" class="pull-right" href="#">Rate</a>
+          </div>
+
           <div class="flowmeta">
             <h4>Node Types</h4>
             <ul class="nodeTypeList">
@@ -60,6 +79,8 @@
 <script src="/js/tags.js"></script>
 <script>
 $(function() {
+    loadRatings();
+
     function selectText(containerid) {
         if (document.selection) {
             var range = document.body.createTextRange();
@@ -71,9 +92,51 @@ $(function() {
             window.getSelection().addRange(range);
         }
     }
+
+    function toggleRatings() {
+        $('.rating-ctrl').toggleClass('active');
+        $('.gist-ratings').toggleClass('active');
+        if ($('.rating-ctrl').hasClass('active')) {
+            $('#toggle-rating-ctrl').text('Cancel');
+        }
+        else {
+            $('#toggle-rating-ctrl').text('Rate');
+        }
+    }
+
     $('#flow').click(function() {
         selectText('flow');
     });
+
+    $('#toggle-rating-ctrl').click(function () {
+        toggleRatings();
+    });
+
+    $('.rating-ctrl > .rate-flow').click(function(event) {
+        var self = $(this);
+        var rating = $(this).attr('id').split('-')[1];
+        $.post("/flow/{{ id }}/rate", { rating: rating },
+            function(data,textStatus,jqXHR) {
+                // window.location.reload();
+                $(".rate-value").find('span').text(data.ratings_avg)
+                loadRatings();
+                toggleRatings();
+        }).fail(function(err) {
+            console.log(err)
+        });
+        event.preventDefault();
+    });
+
+    $('.rating-ctrl > .rate-flow').mouseover(function () {
+        var rateIndex = $(this).attr('id').split('-')[1];
+        $('.rate-flow').each(function(){
+            $(this).removeClass("fa-star").addClass('fa-star-o');
+        });
+        for(i=1; i<=rateIndex; i++){
+            $("#rate-"+i).addClass("fa-star").removeClass("fa-star-o");
+        }
+    });
+
 
 {{#owned}}
     $('#refresh-flow').popover({
@@ -158,7 +221,6 @@ $(function() {
         }
     });
 {{/owned}}
-            
 
 });
 

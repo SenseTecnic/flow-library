@@ -21,6 +21,10 @@ ul {
   padding-bottom: 60px;
 }
 
+.main-content {
+  padding-bottom: 150px;
+}
+
 .banner {
   margin-top: 50px;
   margin-bottom: 15px;
@@ -101,20 +105,32 @@ a.navbar-brand {
     }
 }
 
+
+/* Index page
+ ----------------------------------------------------------------------------*/
 .page-index{
   margin-top: -15px;
   .search {
+    width: 100%;
     margin-top: 20px;
     margin-bottom: 10px;
+
+    .searchbox {
+      max-width: 100%;
+      #searchform{
+        font-size: 1.2em;
+      }
+    }
   }
 }
 
 #tag-list {
   width: 100%;
-  height: 150px;
+  height: 90px;
   overflow: hidden;
   position: relative;
   color: #09f;
+  margin: 20px 0 10px 0;
 
   a {
     font-size: inherit;
@@ -133,21 +149,63 @@ a.navbar-brand {
   span.w1 { font-size: 100%; }
 
   a { color: inherit; }
-  a:hover { color: #0df; }
-  a:hover { color: #0cf; }
-  span.w10 { color: #0cf; }
-  span.w9 { color: #0cf; }
-  span.w8 { color: #0cf; }
-  span.w7 { color: #39d; }
-  span.w6 { color: #90c5f0; }
-  span.w5 { color: #90a0dd; }
-  span.w4 { color: #90c5f0; }
-  span.w3 { color: #a0ddff; }
-  span.w2 { color: #99ccee; }
-  span.w1 { color: #aab5f0; }
+  a:hover { color: #c4213c; }
+  span.w10 { color: #981a2f; }
+  span.w9 { color: #8a2738; }
+  span.w8 { color: #723b46; }
+  span.w7 { color: #67444d; }
+  span.w6 { color: #5e4d53; }
+  span.w5 { color: #595357; }
+  span.w4 { color: #545559; }
+  span.w3 { color: #64676a; }
+  span.w2 { color: #c28716; }
+  span.w1 { color: #d89719; }
 
   span { padding: 0; }
 }
+
+
+
+/* gist page
+ ----------------------------------------------------------------------------*/
+
+.page-gist {
+  .rating-ctrl {
+    display: none;
+    text-align: center;
+    padding: 5px 0 25px;
+    cursor: pointer;
+    
+    &.active {
+      display: block;
+    }
+    >i {
+      font-size: 2em;
+      margin-left: 5px;
+      color: #EAC117;
+    }
+  }
+
+  .gist-ratings {
+    text-align: center;
+    display: none;
+    &.active{
+      display: block;
+    }
+
+    i {
+      font-size: 2em;
+      margin-left: 5px;
+      color: #EAC117;
+    }
+    .rate-value {
+      color: #666;
+    }
+  }
+
+}
+
+
 
 
 
@@ -321,6 +379,11 @@ ul.gist-list {
 
           &.gist-ratings {
             float:right;
+
+            .rate-stars {
+              display: inline-block;
+            }
+
           }
 
         }

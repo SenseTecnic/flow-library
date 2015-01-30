@@ -73,11 +73,12 @@
     text-decoration: none;
 }
 .flowmeta {
-    dbackground: #FFF7D8;
+    /*background: #FFF7D8;*/
     padding: 10px;
     border: 1px solid #ccc;
     border-radius: 4px;
     margin-bottom: 10px;
+    overflow:hidden;
 }
 .flowmeta img {
     dborder: 1px solid #ccc;
