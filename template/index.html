@@ -16,8 +16,39 @@
   </div>
 
   <div class="container main-content page-index">
-
     <div class="row">
+      <div class="col-sm-6">
+        <h3>Featured Flows</h3>
+        <div id="feature-carousel" class="carousel slide" data-ride="carousel">
+          <!-- Indicators -->
+          <ol class="carousel-indicators">
+            <li data-target="#feature-carousel" data-slide-to="0" class="active"></li>
+            <li data-target="#feature-carousel" data-slide-to="1"></li>
+            <li data-target="#feature-carousel" data-slide-to="2"></li>
+          </ol>
+
+          <!-- Wrapper for slides -->
+          <div class="carousel-inner" role="listbox">
+            <div class="item active" style="background: url('/images/featured/feature1f.jpg')">
+              <a href="#">
+                <div class="carousel-caption">Lions Gate Bridge Traffic</div>
+              </a>
+              
+            </div>
+            <div class="item" style="background: url('/images/featured/feature2f.jpg')">
+              <a href="#">
+                <div class="carousel-caption">Aviation Weather Feed</div>
+              </a>
+            </div>
+            <div class="item" style="background: url('/images/featured/feature3f.jpg')">
+              <a href="#">
+                <div class="carousel-caption">UK Electricity Consumption</div>
+              </a>
+            </div>
+          </div>
+
+        </div>
+      </div>
       <div class="col-sm-6">
         <div class="search">
           <div class="searchbox">
@@ -29,9 +60,6 @@
           </div>
         </div>
         <ul id="tag-list"></ul>
-      </div>
-      <div class="col-sm-6">
-        
       </div>
     </div>
 

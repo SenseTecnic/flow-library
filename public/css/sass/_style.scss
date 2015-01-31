@@ -85,7 +85,7 @@ a.navbar-brand {
         border-bottom: 1px solid #aaa;
         background: transparent;
         padding: 0 30px 0 3px;
-        font-size: 1.6em;
+        font-size: 1.5em;
         color: #666;
         outline: 0;
         width: 100%;
@@ -97,7 +97,7 @@ a.navbar-brand {
       right: 0;
       top: 1px;
       i {
-        font-size: 1.6em;
+        font-size: 1.5em;
       }
       &:hover {
         color: #676767;
@@ -122,47 +122,81 @@ a.navbar-brand {
       }
     }
   }
-}
+  #tag-list {
+    width: 100%;
+    height: 150px;
+    overflow: hidden;
+    position: relative;
+    color: #09f;
+    margin: 20px 0 10px 0;
 
-#tag-list {
-  width: 100%;
-  height: 90px;
-  overflow: hidden;
-  position: relative;
-  color: #09f;
-  margin: 20px 0 10px 0;
+    a {
+      font-size: inherit;
+      text-decoration: none;
+    }
 
-  a {
-    font-size: inherit;
-    text-decoration: none;
+    span.w10 { font-size: 550%; }
+    span.w9 { font-size: 500%; }
+    span.w8 { font-size: 450%; }
+    span.w7 { font-size: 400%; }
+    span.w6 { font-size: 350%; }
+    span.w5 { font-size: 300%; }
+    span.w4 { font-size: 250%; }
+    span.w3 { font-size: 200%; }
+    span.w2 { font-size: 150%; }
+    span.w1 { font-size: 100%; }
+
+    a { color: inherit; }
+    a:hover { color: #c4213c; }
+    span.w10 { color: #981a2f; }
+    span.w9 { color: #8a2738; }
+    span.w8 { color: #723b46; }
+    span.w7 { color: #67444d; }
+    span.w6 { color: #5e4d53; }
+    span.w5 { color: #595357; }
+    span.w4 { color: #545559; }
+    span.w3 { color: #64676a; }
+    span.w2 { color: #c28716; }
+    span.w1 { color: #d89719; }
+
+    span { padding: 0; }
   }
 
-  span.w10 { font-size: 550%; }
-  span.w9 { font-size: 500%; }
-  span.w8 { font-size: 450%; }
-  span.w7 { font-size: 400%; }
-  span.w6 { font-size: 350%; }
-  span.w5 { font-size: 300%; }
-  span.w4 { font-size: 250%; }
-  span.w3 { font-size: 200%; }
-  span.w2 { font-size: 150%; }
-  span.w1 { font-size: 100%; }
+  #feature-carousel{
+    /*border-radius: 4px;*/
+    overflow:hidden;
+    height: 180px;
+    .carousel-indicators{
+      bottom: -3px;
+    }
+    .carousel-inner {
+      height: 100%;
+      .item{
+        /*background-size: cover !important;*/
+        background-position: 50% 50% !important;
+        height: 100%;
+        width: 100%;
 
-  a { color: inherit; }
-  a:hover { color: #c4213c; }
-  span.w10 { color: #981a2f; }
-  span.w9 { color: #8a2738; }
-  span.w8 { color: #723b46; }
-  span.w7 { color: #67444d; }
-  span.w6 { color: #5e4d53; }
-  span.w5 { color: #595357; }
-  span.w4 { color: #545559; }
-  span.w3 { color: #64676a; }
-  span.w2 { color: #c28716; }
-  span.w1 { color: #d89719; }
+        >a {
+          display: block;
+          height: 100%;
+          .carousel-caption {
+            background: rgba(0,0,0,0.6);
+            padding: 6px 10px;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            font-size: 1.2em;
+            text-align: left;
+          }
+        }
+      }
+    }
+  }
 
-  span { padding: 0; }
 }
+
+
 
 
 
