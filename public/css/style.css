@@ -317,6 +317,8 @@ ul.gist-list {
         float: left; }
         ul.gist-list.condensed > li .gist-footer > li.gist-ratings, ul.gist-list.condensed > li .gist-footer > li.gist-updated, ul.gist-list.condensed > li .gist-footer > li.gist-comments {
           width: auto; }
+        ul.gist-list.condensed > li .gist-footer > li.gist-ratings {
+          float: right; }
     ul.gist-list.condensed > li .gist-readme {
       padding-right: 60px; }
 

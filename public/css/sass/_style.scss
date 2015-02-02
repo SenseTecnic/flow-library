@@ -409,6 +409,9 @@ ul.gist-list {
           &.gist-comments {
             width: auto;
           }
+          &.gist-ratings {
+            float:right;
+          }
         }
         
       }
