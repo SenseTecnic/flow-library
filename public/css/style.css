@@ -50,6 +50,7 @@ a.navbar-brand {
 .nav .login {
   padding: 7px 0 7px 15px; }
   .nav .login .signin {
+    margin-top: 4px;
     padding: 5px;
     line-height: 12px; }
   .nav .login i {

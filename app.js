@@ -382,7 +382,7 @@ app.get("/tag/:id",function(req,res) {
 app.get("/search",function(req,res) {
     var search = req.query.s || "*";
     var offset = req.query.offset || 0;
-    var limit = req.query.limit || 100;
+    var limit = req.query.limit || 2000; //TODO: shrink limit when we hook up paging
     var orderBy = req.query.orderBy || 'created_at'
     var dir = req.query.dir || 'desc';
     var context = {};
@@ -401,7 +401,7 @@ app.get("/search",function(req,res) {
         var sortFunc = function(a, b) {
             return new Date(b.document[orderBy]) - new Date(a.document[orderBy]);
         }
-        var masterSortFunc = sortFunc; //TODO: for heavens sake rename this...
+        var sortFuncWithDir = sortFunc;
 
         switch(orderBy){
             //sort strings
@@ -424,12 +424,12 @@ app.get("/search",function(req,res) {
                 break       
         }
         if (dir === 'asc') {
-            masterSortFunc = function (a, b) {
+            sortFuncWithDir = function (a, b) {
                 return sortFunc(a, b) * -1;
             }
         }
         // sort it using the sort function we set
-        results.hits = results.hits.sort(masterSortFunc);
+        results.hits = results.hits.sort(sortFuncWithDir);
         
         if (results.hits) {
             context.gists = results.hits.map(function(res) {
