@@ -214,6 +214,9 @@ a.navbar-brand {
     display: inline-block;
     vertical-align: middle; }
 
+.search-toolbar {
+  margin-bottom: 15px; }
+
 ul.gist-list {
   padding: 0px; }
   ul.gist-list > li {
@@ -222,22 +225,7 @@ ul.gist-list {
     border: 1px solid #ddd;
     padding: 15px;
     margin-bottom: 15px;
-    overflow: hidden;
-    /*    .status-broken {
-          color: #fff;
-          background-color: #5cb85c;
-          border-color: #4cae4c;
-        }
-        .status-wip {
-          color: #fff;
-          background-color: #f0ad4e;
-          border-color: #eea236;
-        }
-        .status-ready {
-          color: #fff;
-          background-color: #d9534f;
-          border-color: #d43f3a;
-        }*/ }
+    overflow: hidden; }
     ul.gist-list > li > .gist-description {
       font-size: 1.4em; }
     ul.gist-list > li .gist-readme {
@@ -251,7 +239,7 @@ ul.gist-list {
       margin-bottom: 5px; }
     ul.gist-list > li .gist-tags {
       max-height: 34px;
-      margin-right: 300px;
+      margin-right: 400px;
       overflow: hidden; }
       ul.gist-list > li .gist-tags > li {
         display: inline-block;
@@ -301,6 +289,11 @@ ul.gist-list {
           overflow: hidden; }
         ul.gist-list > li .gist-footer > li i {
           margin-right: 4px; }
+        ul.gist-list > li .gist-footer > li.gist-ratings {
+          width: 130px;
+          float: right; }
+          ul.gist-list > li .gist-footer > li.gist-ratings .rate-stars {
+            display: inline-block; }
   ul.gist-list.condensed > li {
     padding: 10px 10px; }
     ul.gist-list.condensed > li .gist-description {
@@ -318,13 +311,23 @@ ul.gist-list {
         border-left: 0px;
         padding: 3px 10px;
         float: left; }
-        ul.gist-list.condensed > li .gist-footer > li.gist-updated {
+        ul.gist-list.condensed > li .gist-footer > li.gist-ratings, ul.gist-list.condensed > li .gist-footer > li.gist-updated, ul.gist-list.condensed > li .gist-footer > li.gist-comments {
           width: auto; }
-        ul.gist-list.condensed > li .gist-footer > li.gist-comments {
-          width: auto; }
-        ul.gist-list.condensed > li .gist-footer > li.gist-ratings {
-          float: right; }
-          ul.gist-list.condensed > li .gist-footer > li.gist-ratings .rate-stars {
-            display: inline-block; }
     ul.gist-list.condensed > li .gist-readme {
       padding-right: 60px; }
+
+@media (max-width: 768px) {
+  ul.gist-list {
+    padding: 0px; }
+    ul.gist-list > li {
+      padding: 10px; }
+      ul.gist-list > li .gist-tags {
+        margin-bottom: 20px;
+        margin-right: 0px; }
+      ul.gist-list > li .gist-footer {
+        width: 100%;
+        bottom: -5px;
+        border-top-left-radius: 0; }
+        ul.gist-list > li .gist-footer > li.gist-updated {
+          padding: 3px 10px;
+          width: auto; } }

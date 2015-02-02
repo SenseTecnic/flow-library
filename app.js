@@ -382,7 +382,9 @@ app.get("/tag/:id",function(req,res) {
 app.get("/search",function(req,res) {
     var search = req.query.s || "*";
     var offset = req.query.offset || 0;
-    var limit = req.query.limit || 25;
+    var limit = req.query.limit || 100;
+    var orderBy = req.query.orderBy || 'created_at'
+    var dir = req.query.dir || 'desc';
     var context = {};
     // search = search === '' ? "*" : search.split(" ");
 
@@ -396,6 +398,45 @@ app.get("/search",function(req,res) {
     console.log('search query: ', q)
 
     si.search(q,function(results) {
+        // this is the default sorting function (date)
+        var sortFunc = function(a, b) {
+            return new Date(b.document[orderBy]) - new Date(a.document[orderBy]);
+        }
+        var masterSortFunc = sortFunc; //TODO: for heavens sake rename this...
+
+        switch(orderBy){
+            //sort strings
+            case 'owner':
+                sortFunc = function (a,b) {
+                    console.log(a)
+                    return a.document['owner__login'].localeCompare(b.document['owner__login']);
+                }
+                break;
+            // sort numbers
+            case 'ratings_avg':
+            case 'comments':
+                sortFunc = function (a,b) {
+                    console.log('sorting')
+                    console.log(b.document[orderBy], a.document[orderBy])
+                    return b.document[orderBy] - a.document[orderBy];
+                }
+                break;
+            // sort date (default)
+            case 'created_at': 
+            case 'updated_at':
+            default: // use default sortFunc
+                break       
+        }
+
+
+        if (dir === 'asc') {
+            masterSortFunc = function (a, b) {
+                return sortFunc(a, b) * -1;
+            }
+        }
+        // sort it
+        results.hits = results.hits.sort(masterSortFunc);
+        
         if (results.hits) {
             context.gists = results.hits.map(function(res) {
                 // console.log('search result:', res)
@@ -407,6 +448,7 @@ app.get("/search",function(req,res) {
                     created_at: res.document.created_at,
                     updated_at: res.document.updated_at,
                     comments: res.document.comments,
+                    ratings_avg: res.document.ratings_avg,
                     owner: {
                         login: res.document.owner__login,
                         avatar_url: res.document.owner__avatar_url,
@@ -419,7 +461,49 @@ app.get("/search",function(req,res) {
         var hitString = hits + (hits === 1 ? " result" : " results");
         context.hitString = hitString;
         context.search = search === "*"? "" : search;
+        context.limit = limit;
+        context.orderBy = orderBy;
 
+        var orderByString = "Newest";
+
+        // TODO: should we do this in the front-end with JS ?
+        if (dir === 'asc') {
+            switch(orderBy) {
+                case 'created_at':
+                    orderByString = "Oldest";
+                    break;
+                case 'owner':
+                    orderByString = "Owner";
+                    break;
+                case 'updated_at':
+                    orderByString = "Least recently updated";
+                    break;
+                case 'ratings_avg':
+                    orderByString = "Least highest rated";
+                    break;
+                case 'comments':
+                    orderByString = "Least commented";
+                    break;
+            }
+        }
+        else {
+            switch(orderBy) {
+                case 'created_at':
+                    orderByString = "Newest";
+                    break;
+                case 'updated_at':
+                    orderByString = "Recently updated";
+                    break;
+                case 'ratings_avg':
+                    orderByString = "Highest rated";
+                    break;
+                case 'comments':
+                    orderByString = "Most commented";
+                    break;
+            }
+        }
+        context.orderByString = orderByString;
+        
         context.sessionuser = req.session.user;
         res.send(mustache.render(renderTemplates.search,context,partialTemplates));
     });

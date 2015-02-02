@@ -18,12 +18,29 @@
     </div>
   </div>
 
-  <div class="container main-content">
+  <div class="container main-content page-search">
     <div class="row">
       <div class="col-sm-12">
-          <ul class="search-toolbar">
-            <li></li>
-          </ul>
+        <div class="search-toolbar">
+          <div class="btn-group">
+            <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
+              <b>Sort:</b> {{orderByString}} <span class="caret"></span>
+            </button>
+            <ul class="dropdown-menu" role="menu">
+              <li><a href="/search?s={{search}}&orderBy=created_at&dir=desc">Newest</a></li>
+              <li><a href="/search?s={{search}}&orderBy=created_at&dir=asc">Oldest</a></li>
+              <li><a href="/search?s={{search}}&orderBy=owner&dir=asc">Owner</a></li>
+              <li><a href="/search?s={{search}}&orderBy=updated_at&dir=desc">Recently updated</a></li>
+              <li><a href="/search?s={{search}}&orderBy=updated_at&dir=asc">Least recently updated</a></li>
+              <li><a href="/search?s={{search}}&orderBy=ratings_avg&dir=desc">Highest rated</a></li>
+              <li><a href="/search?s={{search}}&orderBy=ratings_avg&dir=asc">Least highest rated</a></li>
+              <!-- 
+              <li><a href="/search?s={{search}}&orderBy=comments&dir=desc">Most commented</a></li>
+              <li><a href="/search?s={{search}}&orderBy=comments&dir=asc">Least commented</a></li>
+              -->
+            </ul>
+          </div>
+        </div>
       </div>
     </div>
 
@@ -38,3 +55,12 @@
     </div>
   </div>
 {{>_footer}}
+
+
+<script>
+
+$(function() {
+  loadRatings();
+});
+
+</script>

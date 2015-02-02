@@ -241,14 +241,11 @@ a.navbar-brand {
 
 
 
-
-
 /* search page 
  ----------------------------------------------------------------------------*/
 
 .banner {
  .search {
-
     padding: 15px;
 
     .lead {
@@ -266,6 +263,11 @@ a.navbar-brand {
     }
  }
 }
+
+.search-toolbar {
+  margin-bottom: 15px;
+}
+
 
 ul.gist-list {
   padding: 0px;
@@ -297,7 +299,7 @@ ul.gist-list {
 
     .gist-tags {
       max-height: 34px;
-      margin-right: 300px;
+      margin-right: 400px;
       overflow: hidden;
       >li{
         display: inline-block;
@@ -360,23 +362,16 @@ ul.gist-list {
         i {
           margin-right: 4px;
         }
+        &.gist-ratings {
+          width: 130px;
+          float:right;
+          .rate-stars {
+            display: inline-block;
+          }
+
+        }
       }
     }
-/*    .status-broken {
-      color: #fff;
-      background-color: #5cb85c;
-      border-color: #4cae4c;
-    }
-    .status-wip {
-      color: #fff;
-      background-color: #f0ad4e;
-      border-color: #eea236;
-    }
-    .status-ready {
-      color: #fff;
-      background-color: #d9534f;
-      border-color: #d43f3a;
-    }*/
   }
 
 
@@ -402,24 +397,11 @@ ul.gist-list {
           padding: 3px 10px;
           float:left;
 
-          
-          &.gist-updated{
-            width: auto;
-          }
-
+          &.gist-ratings,
+          &.gist-updated,
           &.gist-comments {
             width: auto;
           }
-
-          &.gist-ratings {
-            float:right;
-
-            .rate-stars {
-              display: inline-block;
-            }
-
-          }
-
         }
         
       }
@@ -428,4 +410,40 @@ ul.gist-list {
       }
     }
   }
+}
+
+
+@media (max-width: 1200px) {
+}
+
+@media (max-width: 992px) {
+}
+
+@media (max-width: 768px) {
+  ul.gist-list {
+    padding: 0px;
+
+    >li {
+      padding: 10px;
+
+      .gist-tags {
+        margin-bottom: 20px;
+        margin-right: 0px;
+      }
+
+      .gist-footer {
+        width: 100%;
+        bottom: -5px;
+        border-top-left-radius: 0;
+        >li.gist-updated {
+          padding: 3px 10px;
+          width: auto;
+        }
+      }
+    }
+  }
+
+}
+
+@media (max-width: 480px) {
 }
