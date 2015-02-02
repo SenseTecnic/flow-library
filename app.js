@@ -126,9 +126,9 @@ app.get("/",function(req,res) {
     var context = {};
     context.sessionuser = req.session.user;
     when.all([
-        gister.getAll(),
+        gister.getGists({}, {added_at:-1}, 5),
         gister.getAllTags(),
-        gister.getGists({}, {ratings_avg: -1})
+        gister.getGists({}, {ratings_avg: -1}, 5)
     ]).then(function(results) {
         context.recentGists = results[0];
         context.popularTags = results[1];
@@ -395,8 +395,7 @@ app.get("/search",function(req,res) {
         'pageSize': limit,
     };
 
-    console.log('search query: ', q)
-
+    //console.log('search query: ', q)
     si.search(q,function(results) {
         // this is the default sorting function (date)
         var sortFunc = function(a, b) {
@@ -408,7 +407,6 @@ app.get("/search",function(req,res) {
             //sort strings
             case 'owner':
                 sortFunc = function (a,b) {
-                    console.log(a)
                     return a.document['owner__login'].localeCompare(b.document['owner__login']);
                 }
                 break;
@@ -416,8 +414,6 @@ app.get("/search",function(req,res) {
             case 'ratings_avg':
             case 'comments':
                 sortFunc = function (a,b) {
-                    console.log('sorting')
-                    console.log(b.document[orderBy], a.document[orderBy])
                     return b.document[orderBy] - a.document[orderBy];
                 }
                 break;
@@ -427,14 +423,12 @@ app.get("/search",function(req,res) {
             default: // use default sortFunc
                 break       
         }
-
-
         if (dir === 'asc') {
             masterSortFunc = function (a, b) {
                 return sortFunc(a, b) * -1;
             }
         }
-        // sort it
+        // sort it using the sort function we set
         results.hits = results.hits.sort(masterSortFunc);
         
         if (results.hits) {
@@ -464,16 +458,15 @@ app.get("/search",function(req,res) {
         context.limit = limit;
         context.orderBy = orderBy;
 
-        var orderByString = "Newest";
-
         // TODO: should we do this in the front-end with JS ?
+        var orderByString = "Newest";
         if (dir === 'asc') {
             switch(orderBy) {
                 case 'created_at':
                     orderByString = "Oldest";
                     break;
                 case 'owner':
-                    orderByString = "Owner";
+                    orderByString = "Owner ascending";
                     break;
                 case 'updated_at':
                     orderByString = "Least recently updated";
@@ -493,6 +486,9 @@ app.get("/search",function(req,res) {
                     break;
                 case 'updated_at':
                     orderByString = "Recently updated";
+                    break;
+                case 'owner':
+                    orderByString = "Owner descending";
                     break;
                 case 'ratings_avg':
                     orderByString = "Highest rated";

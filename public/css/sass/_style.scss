@@ -59,21 +59,28 @@ ul {
 a.navbar-brand {
   padding: 5px 15px;
 }
-.login{
-  padding-top: 7px;
-  .signin{
-    line-height: 45px;
-  }
-  i {
-    font-size: 1.4em;
-    vertical-align: middle
+
+.nav {
+  .login {
+    padding: 7px 0 7px 15px;
+    .signin{
+      padding: 5px;
+      line-height: 12px;
+    }
+    i {
+      font-size: 1.4em;
+      vertical-align: middle
+    }
+    >a {
+      padding: 0px 5px;
+      display: inline-block;
+    }
   }
 }
 
 .navbar-project.navbar-brand {
   padding: 15px;
 }
-
 
 .searchbox {
     max-width: 500px;

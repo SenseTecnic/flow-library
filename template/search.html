@@ -29,7 +29,8 @@
             <ul class="dropdown-menu" role="menu">
               <li><a href="/search?s={{search}}&orderBy=created_at&dir=desc">Newest</a></li>
               <li><a href="/search?s={{search}}&orderBy=created_at&dir=asc">Oldest</a></li>
-              <li><a href="/search?s={{search}}&orderBy=owner&dir=asc">Owner</a></li>
+              <li><a href="/search?s={{search}}&orderBy=owner&dir=asc">Owner ascending</a></li>
+              <li><a href="/search?s={{search}}&orderBy=owner&dir=desc">Owner descending</a></li>
               <li><a href="/search?s={{search}}&orderBy=updated_at&dir=desc">Recently updated</a></li>
               <li><a href="/search?s={{search}}&orderBy=updated_at&dir=asc">Least recently updated</a></li>
               <li><a href="/search?s={{search}}&orderBy=ratings_avg&dir=desc">Highest rated</a></li>
@@ -58,9 +59,7 @@
 
 
 <script>
-
 $(function() {
   loadRatings();
 });
-
 </script>

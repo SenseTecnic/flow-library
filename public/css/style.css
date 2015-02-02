@@ -47,13 +47,17 @@ ul {
 a.navbar-brand {
   padding: 5px 15px; }
 
-.login {
-  padding-top: 7px; }
-  .login .signin {
-    line-height: 45px; }
-  .login i {
+.nav .login {
+  padding: 7px 0 7px 15px; }
+  .nav .login .signin {
+    padding: 5px;
+    line-height: 12px; }
+  .nav .login i {
     font-size: 1.4em;
     vertical-align: middle; }
+  .nav .login > a {
+    padding: 0px 5px;
+    display: inline-block; }
 
 .navbar-project.navbar-brand {
   padding: 15px; }
