@@ -324,6 +324,11 @@ ul.gist-list {
       padding-right: 60px; }
 
 @media (max-width: 768px) {
+  .nav li > a {
+    text-align: right; }
+  .nav .login {
+    padding-right: 15px; }
+
   ul.gist-list {
     padding: 0px; }
     ul.gist-list > li {
